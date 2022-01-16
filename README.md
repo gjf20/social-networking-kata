@@ -1,4 +1,4 @@
-#Running Tests:
+# Running Tests:
 
 Install Node and npm with [nvm](https://github.com/nvm-sh/nvm)
 `nvm install 16`
@@ -18,7 +18,7 @@ Run the test scripts:
 `npm run test`
 
 
-#Code Description
+# Code Description
 
 This project provides Post, Timeline, and Wall classes to implement the domain functions of a social networking application.
 
