@@ -21,13 +21,13 @@ export default class Post extends Item {
           unitsSince = secondsSince
         } else if (secondsSince < hourInSeconds) {
           unit = "minute"
-          unitsSince = secondsSince / minuteInSeconds
+          unitsSince = Math.round(secondsSince / minuteInSeconds)
         } else if (secondsSince < dayInSeconds){
           unit = "hour"
-          unitsSince = secondsSince / hourInSeconds
+          unitsSince = Math.round(secondsSince / hourInSeconds)
         } else {
           unit = "day"
-          unitsSince = secondsSince / dayInSeconds
+          unitsSince = Math.round(secondsSince / dayInSeconds)
         }
         
         const singular = unitsSince == 1
