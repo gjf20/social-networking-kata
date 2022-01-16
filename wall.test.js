@@ -48,7 +48,7 @@ describe("Wall view", () => {
     ben.publish(benPost)
 
     var expectedFeed = "Alice - " + alicePost.message + " " + alicePost.getTimeSince()
-    expectedFeed += "ben - " + benPost.message + " " + benPost.getTimeSince()
+    expectedFeed += "ben - " + benPost.message + " " + benPost.getTimeSince() //TODO add newlines between posts
     
     expect(subject.view()).toBe(expectedFeed);
   });
