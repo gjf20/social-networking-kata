@@ -1,9 +1,12 @@
+import {Item} from 'linked-list'
+
 const minuteInSeconds = 60
 const hourInSeconds = minuteInSeconds * 60
 const dayInSeconds = hourInSeconds * 24
 
-class Post {
+export default class Post extends Item {
     constructor(date, message) {
+      super()
       this.date = date
       this.message = message
       this.getTimeSince = function() {
