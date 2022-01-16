@@ -18,7 +18,7 @@ export default class Post extends Item {
         
         if (secondsSince < minuteInSeconds) {
           unit = "second"
-          unitsSince = secondsSince
+          unitsSince = Math.round(secondsSince)
         } else if (secondsSince < hourInSeconds) {
           unit = "minute"
           unitsSince = Math.round(secondsSince / minuteInSeconds)
