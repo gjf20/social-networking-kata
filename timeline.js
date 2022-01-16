@@ -1,9 +1,10 @@
 import {List} from 'linked-list'
 
 export default class Timeline {
-    constructor() {
+    constructor(owner) {
+      this.owner = owner
       this.posts = new List()
-      this.view = function () {
+      this.view = function (viewer) {
         if (this.posts.size == 0) {
           return "No posts yet"
         }
@@ -11,7 +12,10 @@ export default class Timeline {
 
         const postArr = this.posts.toArray()
         postArr.forEach(post => {
-          feed += post.message + " " + post.getTimeSince()
+          feed += post.message 
+          if(this.owner != viewer) {
+              feed += " " + post.getTimeSince()
+          }
         });
         
         return feed

@@ -8,6 +8,32 @@ describe("Timeline view", () => {
 
     expect(subject.view()).toBe(expectedPosts);
   });
+
+  test("Timeline non-owner view published post", () => {
+    
+    const subject = new Timeline("Alice")
+    const date = new Date()
+    const message = "hello world"
+    const post = new Post(date, message)
+    const expectedPosts = post.message + " " + post.getTimeSince()
+
+    subject.publish(post)
+    
+    expect(subject.view()).toBe(expectedPosts);
+  });
+
+  test("Timeline view by owner", () => {
+    const owner = "Alice"
+    const subject = new Timeline(owner)
+    const date = new Date()
+    const message = "hello world"
+    const post = new Post(date, message)
+    const expectedPosts = post.message
+
+    subject.publish(post)
+    
+    expect(subject.view(owner)).toBe(expectedPosts);
+  });
 });
 
 describe("Timeline publish", () => {
@@ -17,11 +43,10 @@ describe("Timeline publish", () => {
     const date = new Date()
     const message = "hello world"
     const post = new Post(date, message)
-    const expectedPosts = post.message + " " + post.getTimeSince()
 
     subject.publish(post)
     
-    expect(subject.view()).toBe(expectedPosts);
+    expect(subject.posts.size).toBe(1);
   });
 });
 
