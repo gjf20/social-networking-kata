@@ -29,15 +29,22 @@ describe("Wall view", () => {
 
 describe("Wall Follow", () => {
   test("Wall no follows", () => {
+    const alice = new Timeline("Alice")
+    const subject = new Wall(alice)
     
-    const subject = new Timeline()
-    const date = new Date()
-    const message = "hello world"
-    const post = new Post(date, message)
-
-    subject.publish(post)
-    
-    expect(subject.posts.size).toBe(1);
+    expect(subject.following.size).toBe(1);
   });
+
+  test("Wall follow", () => {
+    const alice = new Timeline("Alice")
+    const ben = new Timeline("Ben")
+    const subject = new Wall(alice)
+
+    subject.follow(ben)
+    
+    expect(subject.following.size).toBe(2);
+  });
+
+  //TODO do not allow a wall to follow the same timeline twice
 });
 

@@ -15,5 +15,8 @@ export default class Wall {
 
         return feed.length == 0 ? "No Posts Yet" : feed
       }
+      this.follow = function(timelineToFollow) {
+        this.following.prepend(timelineToFollow)
+      }
     }
 }
