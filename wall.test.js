@@ -25,6 +25,33 @@ describe("Wall view", () => {
     
     expect(subject.view()).toBe(expectedFeed);
   });
+
+  test("Wall multiple posts by time", () => {
+    const alice = new Timeline("Alice")
+    const ben = new Timeline("ben")
+    const subject = new Wall(alice)
+    subject.follow(ben)
+
+    const date = new Date()
+    const message = "hello world"
+    const alicePost = new Post(date, message)
+
+    const currDate = new Date() //TODO extract this into a test helper
+    const millisSince = 1 * 1000
+    const timeDiff = currDate.getTime() - millisSince
+    const benDate = new Date(timeDiff)
+
+    const benMessage = "hello world ben"
+    const benPost = new Post(benDate, benMessage)
+
+    alice.publish(alicePost)
+    ben.publish(benPost)
+
+    var expectedFeed = "Alice - " + alicePost.message + " " + alicePost.getTimeSince()
+    expectedFeed += "ben - " + benPost.message + " " + benPost.getTimeSince()
+    
+    expect(subject.view()).toBe(expectedFeed);
+  });
 });
 
 describe("Wall Follow", () => {
