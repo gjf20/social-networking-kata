@@ -1,7 +1,8 @@
-import {List} from 'linked-list'
+import {List, Item} from 'linked-list'
 
-export default class Timeline {
+export default class Timeline extends Item {
     constructor(owner) {
+      super()
       this.owner = owner
       this.posts = new List()
       this.view = function (viewer) {
