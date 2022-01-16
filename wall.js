@@ -9,7 +9,7 @@ export default class Wall {
         timelines.forEach(timeline => {
           const posts = timeline.posts.toArray()
           posts.forEach(post => {
-            feed += timeline.owner + " - " + post.message + " " + post.getTimeSince()
+            feed += timeline.owner + " - " + post.message + " " + post.getTimeSince() //might want to refactor the part with message and time since.  Used 3 times (though only used once in non-test code)
           })
         })
 
